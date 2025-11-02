@@ -1,4 +1,4 @@
-name: app_limiter
+name: screen_time
 description: "A Flutter plugin to limit screen time or block apps on Android and iOS"
 version: 0.0.4
 homepage: https://github.com/connect-rizwan/AppLimiter-Plugin-Flutetr
