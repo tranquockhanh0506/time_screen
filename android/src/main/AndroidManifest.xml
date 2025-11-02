@@ -1,0 +1,28 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.example.app_limiter">
+  <!-- Permission to receive BOOT_COMPLETED broadcasts -->
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+  <!-- Permission required when service uses foregroundServiceType="dataSync" -->
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+  <application>
+        <!-- Declare the service that will block apps -->
+        <service
+            android:name=".BlockAppService"
+            android:foregroundServiceType="dataSync" />
+
+        <!-- Declare the receiver that listens for boot events (library manifest: don't set android:exported here) -->
+        <receiver
+            android:name=".BootReceiver">
+             <intent-filter>
+                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                 <category android:name="android.intent.category.DEFAULT" />
+             </intent-filter>
+         </receiver>
+
+        <!-- Declare any other receiver like AmarmReceiver if needed -->
+        <receiver
+            android:name=".AlarmReceiver" />
+
+    </application>
+
+</manifest>
